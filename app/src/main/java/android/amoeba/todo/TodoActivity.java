@@ -22,14 +22,12 @@ public class TodoActivity extends Activity {
 
         addItemButton = (Button)findViewById(R.id.addItemButton);
 
-        addItemButton.setOnClickListener((new AdapterView.OnItemClickListener() {
+        addItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Log.i("TodoActivity", "Title: " + );
-                Intent intent = new Intent(getApplicationContext(), NewItemActivity.class);
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), NewitemActivity.class);
                 startActivity(intent);
             }
-
         });
     }
 
