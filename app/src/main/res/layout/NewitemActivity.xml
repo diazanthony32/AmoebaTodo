@@ -1,0 +1,168 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".TimePickerFragment">
+
+
+    <TextView
+        android:text="Title"
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+    />
+
+    <EditText
+        android:inputType="text"
+        android:id="@+id/title"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@+id/titleText"
+    />
+
+    <TextView
+        android:text="Reminder"
+        android:id="@+id/memoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@+id/title"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="40dp" />
+
+    <EditText
+        android:inputType="text"
+        android:id="@+id/memo"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/memoText"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@+id/memoText"
+     />
+
+    <TextView
+        android:text="Time"
+        android:id="@+id/timeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@+id/memo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="40dp" />
+
+    <TextView
+        android:text="Date"
+        android:id="@+id/dateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_above="@+id/button"
+        android:layout_alignLeft="@+id/fri"
+        android:layout_alignStart="@+id/fri" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Monday"
+        android:id="@+id/mon"
+        android:layout_toRightOf="@+id/title"
+        android:layout_above="@+id/tue"
+        android:layout_alignLeft="@+id/tue"
+        android:layout_alignStart="@+id/tue"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Friday"
+        android:id="@+id/fri"
+        android:checked="false"
+        android:layout_toEndOf="@+id/wed"
+        android:layout_above="@+id/sat"
+        android:layout_toRightOf="@+id/wed"
+        android:layout_marginLeft="50dp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tuesday"
+        android:id="@+id/tue"
+        android:layout_alignTop="@+id/sat"
+        android:layout_alignLeft="@+id/wed"
+        android:layout_alignStart="@+id/wed"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saturday"
+        android:id="@+id/sat"
+        android:layout_above="@+id/sun"
+        android:layout_alignLeft="@+id/fri"
+        android:layout_alignStart="@+id/fri"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wednesday"
+        android:id="@+id/wed"
+        android:layout_above="@+id/thu"
+        android:layout_alignLeft="@+id/thu"
+        android:layout_alignStart="@+id/thu"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sunday"
+        android:id="@+id/sun"
+        android:layout_alignTop="@+id/wed"
+        android:layout_alignLeft="@+id/sat"
+        android:layout_alignStart="@+id/sat"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thursday"
+        android:id="@+id/thu"
+        android:layout_alignTop="@+id/submit"
+        android:layout_alignLeft="@+id/memoText"
+        android:layout_alignStart="@+id/memoText"
+        android:checked="false" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add New Task"
+        android:id="@+id/submit"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/sun"
+        android:layout_alignStart="@+id/sun" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timeText"
+        android:text="Pick time"
+        android:onClick="showTimePickerDialog"
+        android:id="@+id/button" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dateText"
+        android:layout_alignLeft="@+id/dateText"
+        android:text="Pick Date"
+        android:onClick="showDatePickerDialog" />
+
+</RelativeLayout>
