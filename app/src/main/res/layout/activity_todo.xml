@@ -8,11 +8,11 @@
     tools:context=".TodoActivity">
 
     <TextView
-        android:text="aMEba"
+        android:text="Ameba"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#000"
-        android:textSize="175px"
+        android:textSize="190px"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
     />
