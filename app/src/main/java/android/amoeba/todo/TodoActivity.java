@@ -14,18 +14,32 @@ import android.widget.DatePicker;
 import android.widget.TimePicker;
 
 import java.util.Calendar;
+import android.content.Intent;
+import android.widget.Button;
 
 
 public class TodoActivity extends Activity {
 
+    protected Button addItemButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.NewitemActivity);
+        setContentView(R.layout.activity_todo);
+
+        addItemButton = (Button)findViewById(R.id.addItemButton);
+
+        addItemButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), NewitemActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
-    @Override
+        @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.todo, menu);
@@ -42,57 +56,6 @@ public class TodoActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public static class DatePickerFragment extends DialogFragment
-            implements DatePickerDialog.OnDateSetListener {
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            // Use the current date as the default date in the picker
-            final Calendar c = Calendar.getInstance();
-            int year = c.get(Calendar.YEAR);
-            int month = c.get(Calendar.MONTH);
-            int day = c.get(Calendar.DAY_OF_MONTH);
-
-            // Create a new instance of DatePickerDialog and return it
-            return new DatePickerDialog(getActivity(), this, year, month, day);
-        }
-
-        public void onDateSet(DatePicker view, int year, int month, int day) {
-            // Do something with the date chosen by the user
-        }
-
-    }
-
-    public void showDatePickerDialog(View v) {
-        DialogFragment newFragment = new DatePickerFragment();
-        newFragment.show(getFragmentManager(), "datePicker");
-    }
-
-    public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            // Use the current time as the default values for the picker
-            final Calendar c = Calendar.getInstance();
-            int hour = c.get(Calendar.HOUR_OF_DAY);
-            int minute = c.get(Calendar.MINUTE);
-
-            // Create a new instance of TimePickerDialog and return it
-            return new TimePickerDialog(getActivity(), this, hour, minute,
-                    DateFormat.is24HourFormat(getActivity()));
-        }
-
-        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            // Do something with the time chosen by the user
-        }
-
-    }
-
-    public void showTimePickerDialog(View v) {
-        DialogFragment newFragment = new TimePickerFragment();
-        newFragment.show(getFragmentManager(), "timePicker");
     }
 
 }

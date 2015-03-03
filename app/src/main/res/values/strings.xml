@@ -4,5 +4,7 @@
     <string name="app_name">Todo</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="time_select">Select Time</string>
+    <string name="date_select">Select Date</string>
 
 </resources>
