@@ -25,7 +25,7 @@ public class TodoActivity extends Activity {
         addItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), NewitemActivity.class);
+                Intent intent = new Intent(getApplicationContext(), NewItemActivity.class);
                 startActivity(intent);
             }
         });
