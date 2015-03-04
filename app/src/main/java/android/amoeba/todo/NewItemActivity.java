@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -23,7 +24,7 @@ public class NewitemActivity extends Activity {
     }
 
 
-    public static class DatePickerFragment extends DialogFragment
+    public class DatePickerFragment extends DialogFragment
             implements DatePickerDialog.OnDateSetListener {
 
         @Override
@@ -40,18 +41,26 @@ public class NewitemActivity extends Activity {
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
 
-            
+            System.out.println("month=" + month+1 + " day=" + day + " year="
+                    + year);
+
+                TextView textElement = (TextView) findViewById(R.id.button2);
+
+                year = year-2000;
+
+                textElement.setText(month+1 + " / " + day + " / " + year);
 
         }
 
-    }
+        }
+
 
     public void showDatePickerDialog(View v) {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getFragmentManager(), "datePicker");
     }
 
-    public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
+    public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -67,6 +76,47 @@ public class NewitemActivity extends Activity {
 
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 
+
+            System.out.println("Hour=" + hourOfDay + " Minute=" + minute);
+
+            if (hourOfDay > 12){
+
+                hourOfDay = hourOfDay - 12;
+
+                TextView textElement = (TextView) findViewById(R.id.button);
+
+                if ( minute < 10 ){
+
+                    textElement.setText(hourOfDay + " : 0" + minute + " PM"); //leave this line to assign a string resource
+
+                }
+
+                else {
+
+                    textElement.setText(hourOfDay + " : " + minute + " PM"); //leave this line to assign a string resource
+
+                }
+
+            }
+
+            else {
+
+                TextView textElement = (TextView) findViewById(R.id.button);
+
+                if ( minute < 10 ){
+
+                    textElement.setText(hourOfDay + " : 0" + minute + " AM"); //leave this line to assign a string resource
+
+                }
+
+                else {
+
+                    textElement.setText(hourOfDay + " : " + minute + " AM"); //leave this line to assign a string resource
+
+                }
+
+            }
+
         }
 
     }
@@ -75,4 +125,11 @@ public class NewitemActivity extends Activity {
         DialogFragment newFragment = new TimePickerFragment();
         newFragment.show(getFragmentManager(), "timePicker");
     }
+
+    public void sendFeedback(View button){
+
+
+
+    }
+
 }
