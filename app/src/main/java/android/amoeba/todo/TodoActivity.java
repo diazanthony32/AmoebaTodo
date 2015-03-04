@@ -17,6 +17,8 @@ import java.util.Calendar;
 import android.content.Intent;
 import android.widget.Button;
 
+import org.json.JSONArray;
+
 
 public class TodoActivity extends Activity {
 
@@ -36,6 +38,10 @@ public class TodoActivity extends Activity {
                 startActivity(intent);
             }
         });
+
+        //create tasks here: read in json array
+//        JSONArray jsonTaskArr = new JSONArray();
+
     }
 
 
