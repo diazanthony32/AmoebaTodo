@@ -1,13 +1,20 @@
 package android.amoeba.todo;
 
 import android.app.Activity;
-import android.content.Intent;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
+import android.widget.DatePicker;
+import android.widget.TimePicker;
+
+import java.util.Calendar;
+import android.content.Intent;
 import android.widget.Button;
 
 import org.json.JSONArray;
@@ -28,7 +35,7 @@ public class TodoActivity extends Activity {
         addItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), NewitemActivity.class);
+                Intent intent = new Intent(getApplicationContext(), NewItemActivity.class);
                 startActivity(intent);
             }
         });

@@ -1,6 +1,6 @@
 package android.amoeba.todo;
 
-import android.amoeba.todo.NewitemActivity;
+import android.amoeba.todo.NewItemActivity;
 import android.util.Log;
 
 import org.json.JSONArray;
