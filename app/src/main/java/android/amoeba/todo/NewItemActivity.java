@@ -15,6 +15,8 @@ public class NewitemActivity extends Activity {
 
         saveItemButton = (Button)findViewById(R.id.saveItemButton);
 
+        Task task = new Task();
+
         saveItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

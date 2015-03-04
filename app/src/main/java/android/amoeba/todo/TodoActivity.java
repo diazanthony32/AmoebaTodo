@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 
 public class TodoActivity extends Activity {
@@ -32,8 +33,7 @@ public class TodoActivity extends Activity {
             }
         });
 
-        //create tasks here: read in json array
-//        JSONArray jsonTaskArr = new JSONArray();
+
 
     }
 
@@ -55,5 +55,12 @@ public class TodoActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onPause() {
+        //create tasks here: read in json array
+        JSONArray jsonTaskArr = new JSONArray();
+        jsonTaskArr.put(JsonUtil.toJSon(Task task));
     }
 }
