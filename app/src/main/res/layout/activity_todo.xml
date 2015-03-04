@@ -14,7 +14,7 @@
         android:id="@+id/addItemButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Item"/>
+        android:text="Add New Task"/>
 
 
     <TextView
