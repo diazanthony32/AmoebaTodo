@@ -1,7 +1,5 @@
 package android.amoeba.todo;
 
-import android.os.AsyncTask;
-
 import java.sql.Time;
 import java.util.Date;
 

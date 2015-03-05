@@ -1,24 +1,20 @@
 package android.amoeba.todo;
 
 import android.app.Activity;
-import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import java.util.Calendar;
 
-public class NewItemActivity extends Activity {
+public class NewItemActivity extends Activity{
     protected Button saveItemButton;
     protected EditText title;
 
@@ -35,11 +31,47 @@ public class NewItemActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Task.class);
+<<<<<<< HEAD
                 intent.putExtra("title", title.getText().toString());
+=======
+                sendBroadcast(intent);
+
+                final EditText titleData = (EditText)findViewById(R.id.title);
+                String title = titleData.getText().toString();
+
+                if (title == ""){
+                    title = null;
+                }
+
+                final EditText reminderData = (EditText)findViewById(R.id.reminder);
+                String reminder = reminderData.getText().toString();
+
+                if (reminder == ""){
+                    reminder = null;
+                }
+
+                final Button timeData = (Button)findViewById(R.id.button);
+                String time = timeData.getText().toString();
+
+                if (time == "Select Time"){
+                    time = null;
+                }
+
+                final Button dateData = (Button)findViewById(R.id.button2);
+                String date = dateData.getText().toString();
+
+                if (date == "Select Date"){
+                    date = null;
+                }
+
+                System.out.println("Title="+title + " Reminder=" + reminder + " Time=" + time + " Date=" + date);
+
+>>>>>>> 48b58752f0b91c2dd201a0678a45d6b2b622cbd6
             }
         });
     }
 
+<<<<<<< HEAD
 
 //    public static class DatePickerFragment extends DialogFragment
 //            implements DatePickerDialog.OnDateSetListener {
@@ -149,4 +181,16 @@ public class NewItemActivity extends Activity {
 //
 //    }
 //
+=======
+    public void showTimePickerDialog(View v) {
+        DialogFragment newFragment = new TimePickerFragment();
+        newFragment.show(getFragmentManager(), "timePicker");
+    }
+
+    public void showDatePickerDialog(View v) {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getFragmentManager(), "datePicker");
+    }
+
+>>>>>>> 48b58752f0b91c2dd201a0678a45d6b2b622cbd6
 }

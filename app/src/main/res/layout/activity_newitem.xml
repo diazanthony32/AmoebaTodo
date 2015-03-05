@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/paperbackground"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
@@ -10,8 +11,22 @@
 
 
     <TextView
+        android:text="Amoeba"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:layout_marginTop="20dp"
+        android:textSize="100px"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/Name"
+        />
+
+    <TextView
         android:text="Title"
         android:id="@+id/titleText"
+        android:layout_below="@id/Name"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -22,13 +37,13 @@
         android:id="@+id/title"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         android:layout_centerHorizontal="true"
         android:layout_alignTop="@+id/titleText"
         />
 
     <TextView
-        android:text="Reminder"
+        android:text="Details"
         android:id="@+id/memoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,27 +58,21 @@
         android:id="@+id/reminder"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         android:layout_below="@+id/memoText"
         android:layout_centerHorizontal="true"
         android:layout_alignTop="@+id/memoText"
         />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add New Task"
-        android:id="@+id/submit"
-        android:onClick="sendFeedback"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
     <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_toRightOf="@+id/titleText"
+<<<<<<< HEAD
         android:layout_toLeftOf="@+id/submit"
+=======
+        android:layout_toLeftOf="@+id/saveItemButton"
+>>>>>>> 48b58752f0b91c2dd201a0678a45d6b2b622cbd6
         android:layout_below="@+id/reminder"
         android:layout_marginTop="63dp"
         android:layout_alignRight="@+id/reminder"
@@ -105,6 +114,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_gravity="right|top" />
 
+<<<<<<< HEAD
         <Button
             android:text="Save"
             android:id="@+id/saveItemButton"
@@ -116,5 +126,17 @@
     </FrameLayout>
 
 
+=======
+    </FrameLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add New Task"
+        android:id="@+id/saveItemButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+>>>>>>> 48b58752f0b91c2dd201a0678a45d6b2b622cbd6
 
 </RelativeLayout>
