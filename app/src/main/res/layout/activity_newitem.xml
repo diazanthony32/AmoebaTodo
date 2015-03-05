@@ -55,7 +55,7 @@
 
     <EditText
         android:inputType="text"
-        android:id="@+id/memo"
+        android:id="@+id/reminder"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -64,25 +64,15 @@
         android:layout_alignTop="@+id/memoText"
         />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add New Task"
-        android:id="@+id/saveItemButton"
-        android:onClick="sendFeedback"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
     <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_toRightOf="@+id/titleText"
         android:layout_toLeftOf="@+id/saveItemButton"
-        android:layout_below="@+id/memo"
+        android:layout_below="@+id/reminder"
         android:layout_marginTop="63dp"
-        android:layout_alignRight="@+id/memo"
-        android:layout_alignEnd="@+id/memo">
+        android:layout_alignRight="@+id/reminder"
+        android:layout_alignEnd="@+id/reminder">
 
         <Button
             android:layout_width="120dp"
@@ -119,6 +109,16 @@
             android:layout_marginRight="40dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_gravity="right|top" />
+
     </FrameLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add New Task"
+        android:id="@+id/saveItemButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

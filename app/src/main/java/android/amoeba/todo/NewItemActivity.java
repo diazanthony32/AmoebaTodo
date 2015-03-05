@@ -7,6 +7,7 @@ import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.content.Intent;
@@ -27,6 +28,37 @@ public class NewItemActivity extends Activity{
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Task.class);
                 sendBroadcast(intent);
+
+                final EditText titleData = (EditText)findViewById(R.id.title);
+                String title = titleData.getText().toString();
+
+                if (title == ""){
+                    title = null;
+                }
+
+                final EditText reminderData = (EditText)findViewById(R.id.reminder);
+                String reminder = reminderData.getText().toString();
+
+                if (reminder == ""){
+                    reminder = null;
+                }
+
+                final Button timeData = (Button)findViewById(R.id.button);
+                String time = timeData.getText().toString();
+
+                if (time == "Select Time"){
+                    time = null;
+                }
+
+                final Button dateData = (Button)findViewById(R.id.button2);
+                String date = dateData.getText().toString();
+
+                if (date == "Select Date"){
+                    date = null;
+                }
+
+                System.out.println("Title="+title + " Reminder=" + reminder + " Time=" + time + " Date=" + date);
+
             }
         });
     }
@@ -39,12 +71,6 @@ public class NewItemActivity extends Activity{
     public void showDatePickerDialog(View v) {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getFragmentManager(), "datePicker");
-    }
-
-    public void sendFeedback(View button){
-
-
-
     }
 
 }
