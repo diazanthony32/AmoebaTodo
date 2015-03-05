@@ -68,6 +68,6 @@ public class TodoActivity extends Activity {
     protected void onPause() {
         //create tasks here: read in json array
         JSONArray jsonTaskArr = new JSONArray();
-        jsonTaskArr.put(JsonUtil.toJSon(Task task));
+        //jsonTaskArr.put(JsonUtil.toJSon(Task task));
     }
 }

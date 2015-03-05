@@ -10,8 +10,8 @@ public class Task {
     public final String reminder;
     public final Date date;
     public final Time time;
-    public Task(String title, String reminder, Date date, Time time) {
-        this.title = title;
+    public Task() {
+        this.title = extras.getString("title");
         this.reminder = reminder;
         this.date = date;
         this.time = time;
