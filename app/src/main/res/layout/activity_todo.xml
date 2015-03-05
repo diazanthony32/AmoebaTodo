@@ -14,6 +14,7 @@
         android:id="@+id/addItemButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
         android:text="Add Item"/>
 
 
@@ -22,9 +23,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#000"
-        android:textSize="150px"
+        android:layout_marginTop="20dp"
+        android:textSize="100px"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
+        android:id="@+id/Name"
     />
 
 </RelativeLayout>
