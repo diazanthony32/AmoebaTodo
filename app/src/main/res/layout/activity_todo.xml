@@ -10,12 +10,24 @@
     tools:context=".TodoActivity"
     >
 
+<<<<<<< HEAD
+=======
+    <Button
+        android:id="@+id/addItemButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="Add Item"/>
+
+
+>>>>>>> 48b58752f0b91c2dd201a0678a45d6b2b622cbd6
     <TextView
         android:id="@+id/Title"
         android:text="Ameba"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#000"
+<<<<<<< HEAD
         android:textSize="160px"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
@@ -29,5 +41,13 @@
         android:layout_alignParentRight="true"
         android:text="Add New Task"/>
 
+=======
+        android:layout_marginTop="20dp"
+        android:textSize="100px"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/Name"
+    />
+>>>>>>> 48b58752f0b91c2dd201a0678a45d6b2b622cbd6
 
 </RelativeLayout>
