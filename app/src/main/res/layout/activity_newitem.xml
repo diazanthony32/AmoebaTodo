@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:textColor="#000"
         android:layout_marginTop="20dp"
-        android:textSize="100px"
+        android:textSize="120px"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
         android:id="@+id/Name"
@@ -72,7 +72,8 @@
         android:layout_below="@+id/reminder"
         android:layout_marginTop="63dp"
         android:layout_alignRight="@+id/reminder"
-        android:layout_alignEnd="@+id/reminder">
+        android:layout_alignEnd="@+id/reminder"
+        android:paddingLeft="250px">
 
         <TextView
             android:text="Time"
