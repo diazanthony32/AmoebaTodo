@@ -7,24 +7,10 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:background="@drawable/paperbackground"
     tools:context=".TimePickerFragment">
 
-    <TextView
-        android:id="@+id/Title"
-        android:text="Ameba"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#000"
-        android:textSize="160px"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        />
 
     <TextView
-<<<<<<< HEAD
-        android:layout_below="@+id/Title"
-=======
         android:text="Amoeba"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,7 +23,6 @@
         />
 
     <TextView
->>>>>>> 48b58752f0b91c2dd201a0678a45d6b2b622cbd6
         android:text="Title"
         android:id="@+id/titleText"
         android:layout_below="@id/Name"
@@ -52,10 +37,7 @@
         android:id="@+id/title"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
-=======
         android:layout_marginTop="25dp"
->>>>>>> 48b58752f0b91c2dd201a0678a45d6b2b622cbd6
         android:layout_centerHorizontal="true"
         android:layout_alignTop="@+id/titleText"
         />
@@ -69,35 +51,19 @@
         android:layout_below="@+id/title"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="40dp" />
+        android:layout_marginTop="30dp" />
 
     <EditText
         android:inputType="text"
         android:id="@+id/reminder"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
-=======
         android:layout_marginTop="25dp"
->>>>>>> 48b58752f0b91c2dd201a0678a45d6b2b622cbd6
         android:layout_below="@+id/memoText"
         android:layout_centerHorizontal="true"
         android:layout_alignTop="@+id/memoText"
         />
 
-<<<<<<< HEAD
-    <TextView
-        android:text="Time"
-        android:id="@+id/timeText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_marginTop="45dp"
-        android:layout_marginLeft="40dp"
-        android:layout_below="@+id/memo"
-        android:layout_alignLeft="@+id/button"
-        android:layout_alignStart="@+id/button" />
-=======
     <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -107,37 +73,25 @@
         android:layout_marginTop="63dp"
         android:layout_alignRight="@+id/reminder"
         android:layout_alignEnd="@+id/reminder">
->>>>>>> 48b58752f0b91c2dd201a0678a45d6b2b622cbd6
 
-    <TextView
-        android:text="Date"
-        android:id="@+id/dateText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_above="@+id/button"
-        android:layout_marginRight="40dp"
-        android:layout_alignRight="@+id/button2"
-        android:layout_alignEnd="@+id/button2" />
+        <TextView
+            android:text="Time"
+            android:id="@+id/timeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_gravity="left|top" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Done"
-        android:id="@+id/saveItemButton"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"/>
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/time_select"
+            android:onClick="showTimePickerDialog"
+            android:layout_marginTop="20dp"
+            android:id="@+id/button"
+            android:layout_gravity="left|top" />
 
-<<<<<<< HEAD
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/timeText"
-        android:text="@string/time_select"
-        android:onClick="showTimePickerDialog"
-        android:layout_marginLeft="80dp"
-        android:id="@+id/button" />
-=======
         <TextView
             android:text="Date"
             android:id="@+id/dateText"
@@ -147,26 +101,26 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_gravity="right|top" />
 
-    </FrameLayout>
->>>>>>> 48b58752f0b91c2dd201a0678a45d6b2b622cbd6
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/date_select"
+            android:onClick="showDatePickerDialog"
+            android:layout_marginTop="20dp"
+            android:id="@+id/button2"
+            android:layout_gravity="right|top" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-<<<<<<< HEAD
-        android:text="@string/date_select"
-        android:onClick="showDatePickerDialog"
-        android:layout_marginRight="80dp"
-        android:layout_below="@+id/dateText"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/button2" />
-=======
-        android:text="Add New Task"
-        android:id="@+id/saveItemButton"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
->>>>>>> 48b58752f0b91c2dd201a0678a45d6b2b622cbd6
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add New Task"
+            android:id="@+id/saveItemButton"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal|bottom" />
+
+    </FrameLayout>
 
 </RelativeLayout>
