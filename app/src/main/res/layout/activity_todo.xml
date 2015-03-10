@@ -28,6 +28,42 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/Name"
         android:layout_alignParentRight="true"
-        android:text="Add Item"/>
+        android:layout_marginRight="75px"
+        android:text="Add"/>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/Name"
+        android:layout_alignBottom="@+id/addItemButton"
+        android:id="@+id/frameLayout"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+
+        <TextView
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Create new task?"
+            android:textColor="#C0C0C0"
+            android:id="@+id/textView2"
+            android:layout_gravity="center"
+            android:layout_marginRight="200px"/>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/addItemButton">
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/listView"
+            android:layout_gravity="left|top" />
+    </FrameLayout>
 
 </RelativeLayout>
