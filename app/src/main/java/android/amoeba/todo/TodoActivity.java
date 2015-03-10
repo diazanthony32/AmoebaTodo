@@ -13,11 +13,17 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Calendar;
+import java.util.Date;
+
 import android.content.Intent;
 import android.widget.Button;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class TodoActivity extends Activity {
@@ -64,4 +70,45 @@ public class TodoActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        JSONObject obj = new JSONObject();
+        try {
+            obj.put("Name", "crunchify.com");
+            obj.put("Author", "App Shah");
+        } catch (JSONException error) {
+
+        }
+
+        JSONArray jsonArray = new JSONArray();
+        jsonArray.put("");
+        jsonArray.put("Company: Paypal");
+        jsonArray.put("Company: Google");
+        try {
+            obj.put("", jsonArray);
+        } catch (JSONException error) {
+
+        }
+
+        FileWriter file = null;
+        try {
+            file = new FileWriter("/Users/<username>/Documents/file1.txt");
+            file.write(obj.toString());
+            System.out.println("Successfully Copied JSON Object to File...");
+            System.out.println("\nJSON Object: " + obj.toString());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+
+        try {
+            file.flush();
+            file.close();
+        } catch (IOException close) {
+
+        }
+    }
 }
