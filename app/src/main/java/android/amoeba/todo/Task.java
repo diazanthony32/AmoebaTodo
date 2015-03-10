@@ -1,15 +1,18 @@
 package android.amoeba.todo;
 
+import android.content.Intent;
+import android.os.Bundle;
+
 import java.sql.Time;
 import java.util.Date;
 
 public class Task {
     public final String title;
     public final String reminder;
-    public final Date date;
-    public final Time time;
-    public Task() {
-        this.title = extras.getString("title");
+    public final String date;
+    public final String time;
+    public Task(String title, String reminder, String date, String time) {
+        this.title = title;
         this.reminder = reminder;
         this.date = date;
         this.time = time;

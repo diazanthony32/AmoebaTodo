@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.util.Calendar;
@@ -24,6 +25,7 @@ import org.json.JSONObject;
 public class TodoActivity extends Activity {
 
     protected Button addItemButton;
+    protected Bundle extras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,7 @@ public class TodoActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), NewItemActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 0);
             }
         });
 
@@ -44,8 +46,13 @@ public class TodoActivity extends Activity {
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        extras = intent.getExtras();
+    }
 
-        @Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.todo, menu);
@@ -68,6 +75,7 @@ public class TodoActivity extends Activity {
     protected void onPause() {
         //create tasks here: read in json array
         JSONArray jsonTaskArr = new JSONArray();
+        jsonTaskArr.put(extras.get("jsonTask"));
         //jsonTaskArr.put(JsonUtil.toJSon(Task task));
     }
 }

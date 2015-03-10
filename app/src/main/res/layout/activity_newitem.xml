@@ -68,11 +68,6 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_toRightOf="@+id/titleText"
-<<<<<<< HEAD
-        android:layout_toLeftOf="@+id/submit"
-=======
-        android:layout_toLeftOf="@+id/saveItemButton"
->>>>>>> 48b58752f0b91c2dd201a0678a45d6b2b622cbd6
         android:layout_below="@+id/reminder"
         android:layout_marginTop="63dp"
         android:layout_alignRight="@+id/reminder"
@@ -124,33 +119,5 @@
             android:layout_alignParentEnd="true"
             android:layout_centerInParent="true"
             android:layout_gravity="center_horizontal|bottom" />
-
-<<<<<<< HEAD
-        <Button
-            android:text="Save"
-            android:id="@+id/saveItemButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="40dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_gravity="left|bottom" />
     </FrameLayout>
-
-
-=======
-    </FrameLayout>
-
-<<<<<<< HEAD
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add New Task"
-        android:id="@+id/saveItemButton"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
->>>>>>> 48b58752f0b91c2dd201a0678a45d6b2b622cbd6
-
-=======
->>>>>>> db96691c64cc19405881e2d7a1e44527f6ab1ac3
 </RelativeLayout>
