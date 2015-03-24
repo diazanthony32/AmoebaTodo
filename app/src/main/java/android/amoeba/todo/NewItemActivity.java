@@ -1,21 +1,24 @@
 package android.amoeba.todo;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.app.DialogFragment;
-import android.app.TimePickerDialog;
 import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TimePicker;
 import android.content.Intent;
 import android.widget.Button;
-import java.util.Calendar;
+
+import org.json.JSONObject;
+
+import java.sql.Time;
+import java.util.Date;
 
 public class NewItemActivity extends Activity{
     protected Button saveItemButton;
+    public static String title;
+    public static String reminder;
+    public static String date;
+    public static String time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,46 +26,49 @@ public class NewItemActivity extends Activity{
         setContentView(R.layout.activity_newitem);
         saveItemButton = (Button)findViewById(R.id.saveItemButton);
 
+//        Task task = new Task();
+
         saveItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Task.class);
-                sendBroadcast(intent);
+                Intent intent = new Intent(getApplicationContext(), TodoActivity.class);
+
 
                 final EditText titleData = (EditText)findViewById(R.id.title);
-                String title = titleData.getText().toString();
+                title = titleData.getText().toString();
 
                 if (title == ""){
                     title = null;
                 }
 
                 final EditText reminderData = (EditText)findViewById(R.id.reminder);
-                String reminder = reminderData.getText().toString();
+                reminder = reminderData.getText().toString();
 
                 if (reminder == ""){
                     reminder = null;
                 }
 
                 final Button timeData = (Button)findViewById(R.id.button);
-                String time = timeData.getText().toString();
+                time = timeData.getText().toString();
 
                 if (time == "Select Time"){
                     time = null;
                 }
 
                 final Button dateData = (Button)findViewById(R.id.button2);
-                String date = dateData.getText().toString();
+                date = dateData.getText().toString();
 
                 if (date == "Select Date"){
                     date = null;
                 }
-
+                Task task = new Task(title, reminder, date, time);
+                JSONObject jsonTask = JsonUtil.toJSon(task);
+                intent.putExtra("jsonTask", jsonTask.toString());
                 System.out.println("Title="+title + " Reminder=" + reminder + " Time=" + time + " Date=" + date);
-
+                startActivity(intent);
             }
         });
     }
-
     public void showTimePickerDialog(View v) {
         DialogFragment newFragment = new TimePickerFragment();
         newFragment.show(getFragmentManager(), "timePicker");
@@ -72,5 +78,4 @@ public class NewItemActivity extends Activity{
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getFragmentManager(), "datePicker");
     }
-
 }

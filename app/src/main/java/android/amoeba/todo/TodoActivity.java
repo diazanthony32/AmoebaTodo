@@ -7,10 +7,12 @@ import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.io.FileWriter;
@@ -24,18 +26,23 @@ import android.widget.Button;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONStringer;
 
 
 public class TodoActivity extends Activity {
 
     protected Button addItemButton;
+    protected Bundle extras;
+    protected JSONArray jsonTaskArr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todo);
 
-        addItemButton = (Button)findViewById(R.id.addItemButton);
+        String jsonTaskExtra = savedInstanceState.getString("jsonTask");
+        System.out.println("");
+       addItemButton = (Button)findViewById(R.id.addItemButton);
 
         addItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,13 +52,11 @@ public class TodoActivity extends Activity {
             }
         });
 
-        //create tasks here: read in json array
-//        JSONArray jsonTaskArr = new JSONArray();
+
 
     }
 
-
-        @Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.todo, menu);
@@ -74,40 +79,48 @@ public class TodoActivity extends Activity {
     protected void onPause() {
         super.onPause();
 
-        JSONObject obj = new JSONObject();
-        try {
-            obj.put("Name", "crunchify.com");
-            obj.put("Author", "App Shah");
-        } catch (JSONException error) {
+            if (jsonTaskArr == null) {
+                jsonTaskArr = new JSONArray();
+            }
 
-        }
 
-        JSONArray jsonArray = new JSONArray();
-        jsonArray.put("");
-        jsonArray.put("Company: Paypal");
-        jsonArray.put("Company: Google");
-        try {
-            obj.put("", jsonArray);
-        } catch (JSONException error) {
+            try {
+                JSONObject tempTask = new JSONObject(getIntent().getStringExtra("jsonTask"));
+                tempTask.put("", "blah");
+                System.out.println(tempTask);
+                jsonTaskArr.put(tempTask);
+            } catch (JSONException error) {
+                Log.e("TodoActivity", "JSON Exception: " + error);
+            }
 
-        }
 
-        FileWriter file = null;
-        try {
-            file = new FileWriter("/Users/<username>/Documents/file1.txt");
-            file.write(obj.toString());
-            System.out.println("Successfully Copied JSON Object to File...");
-            System.out.println("\nJSON Object: " + obj.toString());
 
-        } catch (IOException e) {
-            e.printStackTrace();
 
-        }
+            JSONObject obj = new JSONObject();
 
-        try {
-            file.flush();
-            file.close();
-        } catch (IOException close) {
+            try {
+                obj.put("", jsonTaskArr);
+            } catch (JSONException error) {
+
+            }
+
+            FileWriter file = null;
+            try {
+                file = new FileWriter("/Users/<username>/Documents/file1.txt");
+                file.write(obj.toString());
+                System.out.println("Successfully Copied JSON Object to File...");
+                System.out.println("\nJSON Object: " + obj.toString());
+
+            } catch (IOException e) {
+                e.printStackTrace();
+
+            }
+
+            try {
+                file.flush();
+                file.close();
+            } catch (IOException close) {
+
 
         }
     }

@@ -68,29 +68,10 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_toRightOf="@+id/titleText"
-        android:layout_toLeftOf="@+id/saveItemButton"
         android:layout_below="@+id/reminder"
         android:layout_marginTop="63dp"
         android:layout_alignRight="@+id/reminder"
         android:layout_alignEnd="@+id/reminder">
-
-        <Button
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="@string/time_select"
-            android:onClick="showTimePickerDialog"
-            android:layout_marginTop="20dp"
-            android:id="@+id/button"
-            android:layout_gravity="left|top" />
-
-        <Button
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="@string/date_select"
-            android:onClick="showDatePickerDialog"
-            android:layout_marginTop="20dp"
-            android:id="@+id/button2"
-            android:layout_gravity="right|top" />
 
         <TextView
             android:text="Time"
@@ -99,6 +80,15 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_gravity="left|top" />
+
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/time_select"
+            android:onClick="showTimePickerDialog"
+            android:layout_marginTop="20dp"
+            android:id="@+id/button"
             android:layout_gravity="left|top" />
 
         <TextView
@@ -110,15 +100,24 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_gravity="right|top" />
 
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/date_select"
+            android:onClick="showDatePickerDialog"
+            android:layout_marginTop="20dp"
+            android:id="@+id/button2"
+            android:layout_gravity="right|top" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add New Task"
+            android:id="@+id/saveItemButton"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal|bottom" />
     </FrameLayout>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add New Task"
-        android:id="@+id/saveItemButton"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
 </RelativeLayout>

@@ -8,7 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class JsonUtil {
-    public static String toJSon(Task task){
+    public static JSONObject toJSon(Task task){
         try {
             JSONObject jsonTask = new JSONObject();
             jsonTask.put("title", task.title);
@@ -18,10 +18,10 @@ public class JsonUtil {
 
 //            JSONArray jsonTaskArr = new JSONArray();
 
-            return jsonTask.toString();
+            return jsonTask;
         }
         catch(JSONException error){
-            Log.e("BlogPostParser", "IO Exception: " + error);
+            Log.e("JSONUtil", "JSONException: " + error);
         }
 
         return null;

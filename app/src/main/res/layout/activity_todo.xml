@@ -10,14 +10,6 @@
     tools:context=".TodoActivity"
     >
 
-    <Button
-        android:id="@+id/addItemButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:text="Add Item"/>
-
-
     <TextView
         android:text="Amoeba"
         android:layout_width="wrap_content"
@@ -28,6 +20,14 @@
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
         android:id="@+id/Name"
-    />
+        />
+
+    <Button
+        android:id="@+id/addItemButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Name"
+        android:layout_alignParentRight="true"
+        android:text="Add Item"/>
 
 </RelativeLayout>
