@@ -40,7 +40,7 @@ public class TodoActivity extends Activity {
         });
 
         //create tasks here: read in json array
-//        JSONArray jsonTaskArr = new JSONArray();
+        //JSONArray jsonTaskArr = new JSONArray();
 
     }
 
