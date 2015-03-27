@@ -13,62 +13,61 @@ import org.json.JSONObject;
 import java.sql.Time;
 import java.util.Date;
 
-public class NewItemActivity extends Activity{
+public class NewItemActivity extends Activity implements View.OnClickListener{
     protected Button saveItemButton;
     public static String title;
     public static String reminder;
     public static String date;
     public static String time;
+    private static JSONObject jsonTask;
+    private static Task task;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newitem);
         saveItemButton = (Button)findViewById(R.id.saveItemButton);
-
-//        Task task = new Task();
-
-        saveItemButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), TodoActivity.class);
-
-
-                final EditText titleData = (EditText)findViewById(R.id.title);
-                title = titleData.getText().toString();
-
-                if (title == ""){
-                    title = null;
-                }
-
-                final EditText reminderData = (EditText)findViewById(R.id.reminder);
-                reminder = reminderData.getText().toString();
-
-                if (reminder == ""){
-                    reminder = null;
-                }
-
-                final Button timeData = (Button)findViewById(R.id.button);
-                time = timeData.getText().toString();
-
-                if (time == "Select Time"){
-                    time = null;
-                }
-
-                final Button dateData = (Button)findViewById(R.id.button2);
-                date = dateData.getText().toString();
-
-                if (date == "Select Date"){
-                    date = null;
-                }
-                Task task = new Task(title, reminder, date, time);
-                JSONObject jsonTask = JsonUtil.toJSon(task);
-                intent.putExtra("jsonTask", jsonTask.toString());
-                System.out.println("Title="+title + " Reminder=" + reminder + " Time=" + time + " Date=" + date);
-                startActivity(intent);
-            }
-        });
+        saveItemButton.setOnClickListener(this);
     }
+
+    @Override
+    public void onClick(View v) {
+        final EditText titleData = (EditText)findViewById(R.id.title);
+        title = titleData.getText().toString();
+
+        if (title == ""){
+            title = null;
+        }
+
+        final EditText reminderData = (EditText)findViewById(R.id.reminder);
+        reminder = reminderData.getText().toString();
+
+        if (reminder == ""){
+            reminder = null;
+        }
+
+        final Button timeData = (Button)findViewById(R.id.button);
+        time = timeData.getText().toString();
+
+        if (time == "Select Time"){
+            time = null;
+        }
+
+        final Button dateData = (Button)findViewById(R.id.button2);
+        date = dateData.getText().toString();
+
+        if (date == "Select Date"){
+            date = null;
+        }
+        task = new Task(title, reminder, date, time);
+        jsonTask = JsonUtil.toJSon(task);
+
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("jsonTask", jsonTask.toString());
+        setResult(RESULT_OK, returnIntent);
+        finish();
+    }
+
     public void showTimePickerDialog(View v) {
         DialogFragment newFragment = new TimePickerFragment();
         newFragment.show(getFragmentManager(), "timePicker");
