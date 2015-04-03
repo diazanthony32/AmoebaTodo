@@ -1,51 +1,101 @@
 package android.amoeba.todo;
 
 import android.app.Activity;
-import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.TimePickerDialog;
 import android.os.Bundle;
-import android.text.format.DateFormat;
+import android.os.Environment;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.DatePicker;
-import android.widget.TimePicker;
+import android.view.View.OnClickListener;
 
-import java.util.Calendar;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Writer;
+
 import android.content.Intent;
 import android.widget.Button;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
-public class TodoActivity extends Activity {
-
+public class TodoActivity extends Activity implements OnClickListener {
     protected Button addItemButton;
+//    protected Bundle extras;
+    protected JSONArray jsonTaskArr;
+    protected File file;
+    public Writer writer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todo);
+        if (file == null) {
+            file = new File(getApplicationContext().getFilesDir(), "JSONtask.json");
+        }
 
+//        String jsonTaskExtra = savedInstanceState.getString("jsonTask");
+//        System.out.println("");
         addItemButton = (Button)findViewById(R.id.addItemButton);
 
-        addItemButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), NewItemActivity.class);
-                startActivity(intent);
-            }
-        });
+        addItemButton.setOnClickListener(this);
 
-        //create tasks here: read in json array
-        //JSONArray jsonTaskArr = new JSONArray();
-
+        try {
+            FileInputStream inputStream = new FileInputStream(file);
+        }catch(FileNotFoundException e) {
+            Log.e("TodoActivity", "FileNotFoundException: " + e);
+        }
     }
 
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(getApplicationContext(), NewItemActivity.class);
+        startActivityForResult(intent, 1);
+    }
 
-        @Override
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode == RESULT_OK){
+            if (jsonTaskArr == null) {
+                jsonTaskArr = new JSONArray();
+            }
+
+            try {
+                JSONObject tempTask = new JSONObject(data.getStringExtra("jsonTask"));
+                System.out.println(tempTask);
+                jsonTaskArr.put(tempTask);
+
+            } catch (JSONException error) {
+                Log.e("TodoActivity", "JSON Exception: " + error);
+            } catch (Exception e) {
+                Log.e("TodoActivity", "IOException: " + e);
+            }
+
+
+            String path = "/JSONtask.json";
+
+            FileOutputStream outputStream;
+            try{
+                outputStream = openFileOutput("JSONtask.json", getApplicationContext().MODE_PRIVATE);
+                System.out.println("Start Writings");
+                outputStream.write(jsonTaskArr.toString().getBytes());
+                outputStream.close();
+                System.out.println("Finish Writings");
+            }catch (Exception e){
+                System.err.println("Error: " + e);
+            }
+
+         }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.todo, menu);
@@ -64,4 +114,11 @@ public class TodoActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+
+
+    }
 }
