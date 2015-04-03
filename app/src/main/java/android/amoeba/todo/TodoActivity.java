@@ -10,11 +10,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.io.OutputStreamWriter;
 import java.io.Writer;
 
 import android.content.Intent;
@@ -36,12 +37,21 @@ public class TodoActivity extends Activity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todo);
+        if (file == null) {
+            file = new File(getApplicationContext().getFilesDir(), "JSONtask.json");
+        }
 
 //        String jsonTaskExtra = savedInstanceState.getString("jsonTask");
 //        System.out.println("");
         addItemButton = (Button)findViewById(R.id.addItemButton);
 
         addItemButton.setOnClickListener(this);
+
+        try {
+            FileInputStream inputStream = new FileInputStream(file);
+        }catch(FileNotFoundException e) {
+            Log.e("TodoActivity", "FileNotFoundException: " + e);
+        }
 
 
     }
@@ -63,58 +73,28 @@ public class TodoActivity extends Activity implements OnClickListener {
                 JSONObject tempTask = new JSONObject(data.getStringExtra("jsonTask"));
                 System.out.println(tempTask);
                 jsonTaskArr.put(tempTask);
-                if (file == null) {
-                    file = new File(Environment.getExternalStorageDirectory(), "JSONtask.json");
-                    writer = new FileWriter(new OutputStreamWriter(out, "UTF-8"));
-                }
+
             } catch (JSONException error) {
                 Log.e("TodoActivity", "JSON Exception: " + error);
-            } catch (IOException e) {
+            } catch (Exception e) {
                 Log.e("TodoActivity", "IOException: " + e);
             }
 
 
             String path = "/JSONtask.json";
 
-            ObjectOutputStream outputStream = null;
+            FileOutputStream outputStream;
             try{
-                outputStream = new ObjectOutputStream(new FileOutputStream(path));
+                outputStream = openFileOutput("JSONtask.json", getApplicationContext().MODE_PRIVATE);
                 System.out.println("Start Writings");
-                writer.writeObject(jsonTaskArr);
+                outputStream.write(jsonTaskArr.toString().getBytes());
                 outputStream.close();
+                System.out.println("Finish Writings");
             }catch (Exception e){
                 System.err.println("Error: " + e);
             }
 
-
-//            I don't know about this code
-//            JSONObject obj = new JSONObject();
-//
-//            try {
-//                obj.put("", jsonTaskArr);
-//            } catch (JSONException error) {
-//
-//            }
-//
-//            FileWriter file = null;
-//            try {
-//                file = new FileWriter("/Users/Documents/file1.txt");
-//                file.write(obj.toString());
-//                System.out.println("Successfully Copied JSON Object to File...");
-//                System.out.println("\nJSON Object: " + obj.toString());
-//
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//
-//            }
-//
-//            try {
-////                file.flush();
-//                file.close();
-//            } catch (IOException close) {}
-//
-//
-            }
+         }
     }
 
     @Override
