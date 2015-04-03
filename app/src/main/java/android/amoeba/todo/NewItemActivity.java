@@ -26,8 +26,6 @@ public class NewItemActivity extends Activity{
         saveItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Task.class);
-                sendBroadcast(intent);
 
                 final EditText titleData = (EditText)findViewById(R.id.title);
                 String title = titleData.getText().toString();
@@ -56,6 +54,14 @@ public class NewItemActivity extends Activity{
                 if (date == "Select Date"){
                     date = null;
                 }
+                Intent myIntent = new Intent(getApplicationContext(), TodoActivity.class);
+
+                myIntent.putExtra("title",titleData.getText().toString());
+                myIntent.putExtra("reminder",reminderData.getText().toString());
+                myIntent.putExtra("time",timeData.getText().toString());
+                myIntent.putExtra("date",dateData.getText().toString());
+
+                startActivity(myIntent);
 
                 System.out.println("Title="+title + " Reminder=" + reminder + " Time=" + time + " Date=" + date);
 
