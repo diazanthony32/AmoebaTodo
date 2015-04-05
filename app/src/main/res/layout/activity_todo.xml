@@ -58,6 +58,34 @@
         android:id="@+id/listView2"
         android:layout_below="@+id/textView"/>
 
+        <TextView
+            android:id="@+id/todoTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#0000FF"
+            android:textSize="35px"/>
+
+        <TextView
+            android:id="@+id/todoReminder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#F000"
+            android:textSize="30px"/>
+
+        <TextView
+            android:id="@+id/todoDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0000"
+            android:textSize="25px"/>
+
+        <TextView
+            android:id="@+id/todoTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0000"
+            android:textSize="25px"/>
+
     </FrameLayout>
 
 </RelativeLayout>

@@ -1,27 +1,16 @@
 package android.amoeba.todo;
 
 import android.app.Activity;
-import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.TimePickerDialog;
 import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.DatePicker;
 import android.widget.ListView;
-import android.widget.TimePicker;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import android.content.Intent;
 import android.widget.Button;
-
-import org.json.JSONArray;
-
 
 public class TodoActivity extends Activity {
 
@@ -29,37 +18,22 @@ public class TodoActivity extends Activity {
     private ArrayList<String> items;
     private ArrayAdapter<String> itemsAdapter;
     private ListView listView2;
-    private String title="";
-    private String reminder="";
-    private String time="";
-    private String date="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todo);
-        if(getIntent().getStringExtra("title")!= null){
-            title = getIntent().getStringExtra("title");
-        }
-        if(getIntent().getStringExtra("reminder")!= null){
-            title = getIntent().getStringExtra("reminder");
-        }
-        if(getIntent().getStringExtra("time")!= null){
-            title = getIntent().getStringExtra("time");
-        }
-        if(getIntent().getStringExtra("date")!= null){
-            title = getIntent().getStringExtra("date");
-        }
+
         // ADD HERE
         listView2 = (ListView) findViewById(R.id.listView2);
+        //the id of the list view of your layout might be different
         items = new ArrayList<String>();
         itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
         listView2.setAdapter(itemsAdapter);
-        items.add("First Item");
-        items.add("Second Item");
-        items.add(title);
-        items.add(reminder);
-        items.add(time);
-        items.add(date);
+        //"this" refers to your activity's context
+        TodoAdapter adapter = new TodoAdapter(this, PostActivity.get().tasks);
+        //set the adapter so that it can display on the list view
+        listView2.setAdapter(adapter);
 
         addItemButton = (Button)findViewById(R.id.addItemButton);
 
@@ -70,12 +44,9 @@ public class TodoActivity extends Activity {
                 startActivity(intent);
             }
         });
-
         //create tasks here: read in json array
         //JSONArray jsonTaskArr = new JSONArray();
-
     }
-
 
         @Override
     public boolean onCreateOptionsMenu(Menu menu) {
