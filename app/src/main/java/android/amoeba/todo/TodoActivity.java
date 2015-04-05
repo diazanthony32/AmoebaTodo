@@ -24,14 +24,19 @@ import android.widget.Button;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
+import java.util.ArrayList;
 
-public class TodoActivity extends Activity implements OnClickListener {
+public class TodoActivity extends Activity {
     protected Button addItemButton;
 //    protected Bundle extras;
     protected JSONArray jsonTaskArr;
     protected File file;
     public Writer writer;
+    private ArrayAdapter<String> itemsAdapter;
+    private ListView listView2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,21 +48,32 @@ public class TodoActivity extends Activity implements OnClickListener {
 
 //        String jsonTaskExtra = savedInstanceState.getString("jsonTask");
 //        System.out.println("");
-        addItemButton = (Button)findViewById(R.id.addItemButton);
-
-        addItemButton.setOnClickListener(this);
 
         try {
             FileInputStream inputStream = new FileInputStream(file);
         }catch(FileNotFoundException e) {
             Log.e("TodoActivity", "FileNotFoundException: " + e);
         }
-    }
 
-    @Override
-    public void onClick(View v) {
-        Intent intent = new Intent(getApplicationContext(), NewItemActivity.class);
-        startActivityForResult(intent, 1);
+        // ADD HERE
+        listView2 = (ListView) findViewById(R.id.listView2);
+        //the id of the list view of your layout might be different
+        //"this" refers to your activity's context
+        TodoAdapter adapter = new TodoAdapter(this, PostActivity.get().tasks);
+        //set the adapter so that it can display on the list view
+        listView2.setAdapter(adapter);
+
+        addItemButton = (Button)findViewById(R.id.addItemButton);
+
+        addItemButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), NewItemActivity.class);
+                startActivityForResult(intent, 1);
+            }
+        });
+        //create tasks here: read in json array
+        //JSONArray jsonTaskArr = new JSONArray();
     }
 
     @Override
