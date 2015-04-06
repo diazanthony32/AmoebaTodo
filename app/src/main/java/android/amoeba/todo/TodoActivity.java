@@ -72,6 +72,8 @@ public class TodoActivity extends Activity {
                 startActivityForResult(intent, 1);
             }
         });
+
+
         //create tasks here: read in json array
         //JSONArray jsonTaskArr = new JSONArray();
     }
